@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Banner from "./Banner";
 //PORTALS
 //To have a modal appear above everything else we need to use a portal
 //In index.js it usually renders only one div
@@ -21,12 +22,14 @@ const OTHER_CONTENT_STYLES = {
 function App() {
   const [modal1Open, setModal1Open] = useState(false);
   const [modal2Open, setModal2Open] = useState(false);
+  const [modal3Open, setModal3Open] = useState(false);
 
   function closeModal(e) {
     // console.log(e.target.tagName);
     if (e.target.tagName === "DIV") {
       setModal1Open(false);
       setModal2Open(false);
+      setModal3Open(false);
     }
   }
 
@@ -43,6 +46,11 @@ function App() {
         </Modal>
       </div>
       <div style={OTHER_CONTENT_STYLES}>Other Content</div>
+      <Banner
+        closeModal={closeModal}
+        modal3Open={modal3Open}
+        setModal3Open={setModal3Open}
+      />
     </>
   );
 }
